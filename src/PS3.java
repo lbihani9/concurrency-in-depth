@@ -39,7 +39,7 @@ public class PS3 {
                 while (isFull()) {
                     try {
                         if (waitingConsumersCount.get() == 0) {
-                            System.out.println(Thread.currentThread().getName() + ": No consumer found. Dropping element.");
+                            System.out.println(Thread.currentThread().getName() + ": Buffer is full. No consumer available. Dropping element.");
                             return;
                         }
                         System.out.println(Thread.currentThread().getName() + ": Buffer is full. Waiting for some space.... Current buffer size: " + buffer.size());
@@ -65,7 +65,7 @@ public class PS3 {
                 while (isEmpty()) {
                     try {
                         if (waitingProducersCount.get() == 0) {
-                           System.out.println(Thread.currentThread().getName() + ": Empty buffer found. No producer available. Exiting...");
+                           System.out.println(Thread.currentThread().getName() + ": Buffer is empty. No producer available. Exiting...");
                            return -1;
                         }
                         System.out.println(Thread.currentThread().getName() + ": Buffer is empty. Waiting for some elements to be pushed in the buffer.... Current buffer size: " + buffer.size());
